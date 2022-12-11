@@ -1,3 +1,5 @@
+-- Joining tables with the NATURAL JOIN, USING, or ON clauses results in an INNER join.
+
 -- the join will be performed based on all the columns with same name
 -- only those rows will be salected where all the columns march
 -- the columns with same name should have same data type or return srror
