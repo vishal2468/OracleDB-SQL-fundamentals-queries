@@ -34,3 +34,10 @@ FROM
     EMPLOYEES   E
     FULL OUTER JOIN DEPARTMENTS D
     ON (E.DEPARTMENT_ID = D.DEPARTMENT_ID);
+
+-- cross joins are rarely used
+SELECT
+    count(*)
+FROM
+    EMPLOYEES CROSS
+    JOIN DEPARTMENTS;
