@@ -1,0 +1,1 @@
+# OracleDB-SQL-fundamentals-queries
