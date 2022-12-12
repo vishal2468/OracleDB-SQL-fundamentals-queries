@@ -2,9 +2,8 @@
 
 The queries are categorised into topics and  put into saperate files.
 
-First of all one should run the 
-## sqlscript.sql
-
+First of all one should run the ** sqlscript.sql **
+ 
 It will create all the tables that are required for running the queries.
 
 The sequence in which one should go through the codes:
@@ -20,4 +19,5 @@ The sequence in which one should go through the codes:
 10. OuterJoins
 11. Subqueries
 
-I Will also update a PLSQL tution in the similar manner.
+I Will also update a PLSQL tution in the similar manner. 
+** Peace.. **
