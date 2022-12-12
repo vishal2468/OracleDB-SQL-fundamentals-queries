@@ -127,9 +127,10 @@ WHERE
         WHERE
             JOB_ID='IT_PROG'
     );
+
 /
 
--- not opeareror can be used in ANY , ALL or IN 
+-- not opeareror can be used in ANY , ALL or IN
 -- note that not will come before the field that is to be compared
 SELECT
     *
@@ -144,4 +145,97 @@ WHERE
         WHERE
             JOB_ID='IT_PROG'
     );
+
 /
+
+-- EXISTS
+-- exists is used when the main query is dependent of rows existing/not existing in the db
+-- find departments that does not have any employees
+SELECT
+    *
+FROM
+    DEPARTMENTS D
+WHERE
+    NOT EXISTS (
+        SELECT
+            *
+        FROM
+            EMPLOYEES   E
+        WHERE
+            E.DEPARTMENT_ID=D.DEPARTMENT_ID
+    );
+
+/
+
+-- managers in the EMPLOYEES table who earns a salary more than 10000.
+-- in th inner query we find if employee existes whose manager is the employee in ouret query
+SELECT
+    *
+FROM
+    EMPLOYEES M
+WHERE
+    EXISTS(
+        SELECT
+            *
+        FROM
+            EMPLOYEES E
+        WHERE
+            E.MANAGER_ID=M.EMPLOYEE_ID
+    )
+    AND M.SALARY>10000;
+
+/
+
+-- display all the employees who do not have any subordinates.
+-- we will look at this query again
+SELECT
+    *
+FROM
+    EMPLOYEES M
+WHERE
+    M.EMPLOYEE_ID NOT IN(
+        SELECT
+            E.MANAGER_ID
+        FROM
+            EMPLOYEES E
+    );
+
+/
+
+-- display the employees who are manager
+-- we have 18 employees who have subordinates
+-- why the above query then didnot return any result?
+SELECT
+    *
+FROM
+    EMPLOYEES M
+WHERE
+    M.EMPLOYEE_ID IN(
+        SELECT
+            E.MANAGER_ID
+        FROM
+            EMPLOYEES E
+    );
+
+/
+
+-- the reason that the above to above query did not work because there is a null value in the inner query DELETE
+-- and when the employee is compared to null it returns null, not true or false
+-- and therefor it is not selected
+-- that query will start working if discard null from the inner query result
+SELECT
+    *
+FROM
+    EMPLOYEES M
+WHERE
+    M.EMPLOYEE_ID NOT IN(
+        SELECT
+            E.MANAGER_ID
+        FROM
+            EMPLOYEES E
+        WHERE
+            E.MANAGER_ID IS NOT NULL
+    );
+/
+-- **********************************************************************--
+-- so this concludes this tutional of Oracle sql foundations.
