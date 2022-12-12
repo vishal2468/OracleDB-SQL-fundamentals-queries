@@ -19,3 +19,5 @@ The sequence in which one should go through the codes:
 9. NonEquiJoins
 10. OuterJoins
 11. Subqueries
+
+I Will also update a PLSQL tution in the similar manner.
